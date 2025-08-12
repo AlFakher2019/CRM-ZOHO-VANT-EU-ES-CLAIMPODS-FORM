@@ -172,7 +172,7 @@
                                 <div class="zfCol">
                                     <div class="zf-tempFrmWrapper  zf-large "><label class="zf-labelName">
                                             Piso/Apartamento/Portal/Escalera
-                                            <em class="zf-important"> *</em>
+                                            
                                         </label>
                                         <div class="zf-tempContDiv">
                                             <span>
@@ -185,6 +185,7 @@
                                     </div>
                                     <div class="zf-tempFrmWrapper  zf-large "><label class="zf-labelName">
                                             Estado/Región/Provincia
+                                            <em class="zf-important"> *</em>
                                         </label>
                                         <div class="zf-tempContDiv">
                                             <select class="zf-form-sBox" name="Dropdown" checktype="c1" aria-placeholder="Select an option">
@@ -362,7 +363,7 @@
     <script type="text/javascript">var dateAndMonthRegexFormateArray = zf_SetDateAndMonthRegexBasedOnDateFormate('dd-MMM-yyyy');
         var zf_DateRegex = new RegExp(dateAndMonthRegexFormateArray[0]);
         var zf_MonthYearRegex = new RegExp(dateAndMonthRegexFormateArray[1]);
-        var zf_MandArray = ["Name_First", "Name_Last", "PhoneNumber_countrycode", "Date", "Email", "SingleLine", "Number", "SingleLine1", "SingleLine4", "SingleLine2", "Dropdown1"];
+        var zf_MandArray = ["Name_First", "Name_Last", "PhoneNumber_countrycode", "Date", "Email", "SingleLine", "Number", "SingleLine1", "SingleLine4","Dropdown","Dropdown1"];
         var zf_FieldArray = ["Name_First", "Name_Last", "PhoneNumber_countrycode", "Date", "Email", "SingleLine", "Number", "SingleLine1", "SingleLine4", "SingleLine2", "Dropdown", "Radio", "Dropdown1"];
         var isSalesIQIntegrationEnabled = false;
         var salesIQFieldsArray = [];</script>
@@ -370,9 +371,9 @@
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
   flatpickr("#Dob", {
-    dateFormat: "d-M-Y", // This shows as 01-Aug-2002
+    dateFormat: "d-M-Y", 
     maxDate: "today"
-    // Removed altInput to avoid issues with Zoho validation
+    
   });
 </script>
 
