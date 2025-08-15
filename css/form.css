@@ -1639,3 +1639,23 @@ input.country-field[readonly] {
   color: #555 !important;
   cursor: not-allowed !important;
 }
+@media (max-width: 768px) {
+    html, body {
+        overflow-y: scroll;         
+        -ms-overflow-style: none;   
+        scrollbar-width: none;      
+    }
+    html::-webkit-scrollbar, 
+    body::-webkit-scrollbar {
+        display: none;              
+    }
+}
+ html, body {
+        overflow-y: scroll;         
+        -ms-overflow-style: none;   
+        scrollbar-width: none;      
+    }
+    html::-webkit-scrollbar, 
+    body::-webkit-scrollbar {
+        display: none;              
+    }
