@@ -145,7 +145,7 @@ ol, ul {
 /* .arrangeAddress .zf-addrCont  span.zf-addtwo{ width: 100% !important;float: none !important;} 		 */
 /**********Error Message***********/	
 .zf-errorMessage {
-	font: 15px Arial, Helvetica, sans-serif;
+	font: 12px Arial, Helvetica, sans-serif;
     color: #B61C11;
 	position: absolute;
     padding-top: 0px;
@@ -670,9 +670,9 @@ ol, ul {
     color: rgb(0, 0, 0);
 }
 .zf-threeColumns .zf-tempContDiv span {
-	margin: 0 1% 15px 0;
-    width: 44%;
-    float: left;
+	
+    width: 48%;
+    /* float: left; */
     display: block;
 }
 .zf-threeColumns .zf-tempContDiv span:nth-child(3n) {
@@ -1250,7 +1250,7 @@ width: 223px;
 .zfthreeColumn {
 	display: flex;
   	flex-wrap: nowrap;
-	gap: 26.5px;
+	gap: 25px;
 }
 .zfoneColumn .zfCol{
 	max-width: 100%;
@@ -1503,9 +1503,7 @@ width: 223px;
   border-color: #000000;
 }
 
-.zf-threeColumns .zf-tempContDiv span input[type="radio"] {
-  margin-right: 12px;
-}
+
 /* Ensure all fields stack vertically on mobile */
 @media (max-width: 768px) {
   .zftwoColumn,
@@ -1571,15 +1569,13 @@ width: 223px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	flex-wrap: wrap;
+	display: flex;
+    column-gap: 24px;
+    justify-content: flex-start;
+	
 }
 
-.zf-overflow {
-  display: flex;
-  column-gap: 24px;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-}
+
 
 
 
@@ -1639,6 +1635,7 @@ input.country-field[readonly] {
   color: #555 !important;
   cursor: not-allowed !important;
 }
+
 @media (max-width: 768px) {
     html, body {
         overflow-y: scroll;         
@@ -1659,3 +1656,46 @@ input.country-field[readonly] {
     body::-webkit-scrollbar {
         display: none;              
     }
+
+	/* STANDALONE OVERRIDE CSS - Add this anywhere in your CSS */
+
+/* Override: Remove all gaps and set manual spacing */
+.zf-overflow {
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    column-gap: 0 !important;
+    gap: 0 !important;
+}
+
+/* Override: Set exact 50% width and manual margin control */
+.zf-threeColumns .zf-tempContDiv span {
+    width: 50% !important;
+    margin-right: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* Override: Add gap only to first box */
+.zf-threeColumns .zf-tempContDiv span:first-child {
+    margin-right: 27px !important;
+}
+
+/* Override: Ensure last box has no right margin */
+.zf-threeColumns .zf-tempContDiv span:last-child {
+    margin-right: 0 !important;
+}
+
+/* Override: Mobile - stack vertically and remove margins */
+@media (max-width: 768px) {
+    .zf-threeColumns .zf-tempContDiv span {
+        width: 100% !important;
+        margin-right: 0 !important;
+    }
+    .zf-overflow{
+		display: flex;
+		flex-direction: column;
+	}
+    .zf-threeColumns .zf-tempContDiv span:first-child {
+        margin-right: 0 !important;
+    }
+}
