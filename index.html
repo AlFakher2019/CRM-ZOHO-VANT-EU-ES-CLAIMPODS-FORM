@@ -352,11 +352,22 @@
                             </div>
                         </div>
                     </ul>
+                    <div class="zf-tempFrmWrapper zf-decesion ">
+                            <div class="zf-tempContDiv"><input type="checkbox" checktype="c1" id="DecisionBox"
+                                    name="DecisionBox" /><label for="DecisionBox" class="zf-labelName">
+                                    Confirmo que tengo 18 años o más
+                                     <em class="zf-important"> *</em>
+                                </label>
+                                <p id="DecisionBox_error" class="zf-errorMessage" style="display: none;">Invalid value
+                                </p>
+                            </div>
+                            <div class="zf-clearBoth"></div>
+                        </div>
                 </div>
                 <ul>
                     <li class="zf-fmFooter"><button class="zf-submitColor">Enviar</button></li>
                      <span class="terms">
-                       Se aplican los <a href="https://tryvant.com/es-en/content/terms-and-conditions" target="_blank"> términos y condiciones</a>
+                       Se aplican los <a href="https://tryvant.com/es-es/content/terms-and-conditions" target="_blank"> términos y condiciones</a>
                     </span>
                 </ul>
             </div>
@@ -365,8 +376,8 @@
     <script type="text/javascript">var dateAndMonthRegexFormateArray = zf_SetDateAndMonthRegexBasedOnDateFormate('dd-MMM-yyyy');
         var zf_DateRegex = new RegExp(dateAndMonthRegexFormateArray[0]);
         var zf_MonthYearRegex = new RegExp(dateAndMonthRegexFormateArray[1]);
-        var zf_MandArray = ["Name_First", "Name_Last", "PhoneNumber_countrycode", "Date", "Email", "SingleLine", "Number", "SingleLine1", "SingleLine4","Dropdown","Dropdown1"];
-        var zf_FieldArray = ["Name_First", "Name_Last", "PhoneNumber_countrycode", "Date", "Email", "SingleLine", "Number", "SingleLine1", "SingleLine4", "SingleLine2", "Dropdown", "Radio", "Dropdown1"];
+        var zf_MandArray = ["Name_First", "Name_Last", "PhoneNumber_countrycode", "Date", "Email", "SingleLine", "Number", "SingleLine1", "SingleLine4","Dropdown","Dropdown1","DecisionBox"];
+        var zf_FieldArray = ["Name_First", "Name_Last", "PhoneNumber_countrycode", "Date", "Email", "SingleLine", "Number", "SingleLine1", "SingleLine4", "SingleLine2", "Dropdown", "Radio", "Dropdown1","DecisionBox"];
         var isSalesIQIntegrationEnabled = false;
         var salesIQFieldsArray = [];</script>
         <!-- Flatpickr JS -->
