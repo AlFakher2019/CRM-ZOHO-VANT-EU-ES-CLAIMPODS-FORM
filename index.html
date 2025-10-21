@@ -482,6 +482,95 @@
         observer.observe(document.querySelector("#form"), { childList: true, subtree: true });
     </script>
 
+<script>
+   async function validate_Email() {
+  return new Promise(async (resolve) => {
+    console.log("Starting email validation");
+    const emailInput = document.querySelector('input[name="Email"]');
+    const emailError = document.getElementById("Email_error");
+    const email = emailInput.value.trim();
 
+    if (!email) {
+      console.log("Email empty");
+      emailError.style.display = "block";
+      emailError.innerText = "Please enter your email.";
+      resolve(false);
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+    //   console.log("Email format invalid");
+      emailError.style.display = "block";
+      emailError.innerText = "Please enter a valid email address.";
+      resolve(false);
+      return;
+    }
+
+    try {
+      const apiUrl = "https://middlewares-a7edfgatcgaeh2ft.uaenorth-01.azurewebsites.net/api/EmailCheckForGifts?code=P4-jsr7CWLlDBwv4qOA4cJ3A62ZG0ZzQaWmI_4Sd-swxAzFuz5kGlg==";
+    //   console.log("Fetching email check from:", apiUrl);
+
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      if (!response.ok) throw new Error("Network error");
+
+      const data = await response.json();
+    //   console.log("API response:", data);
+
+      if (data.available === false) {
+        // console.log("Email already exists");
+        emailError.style.display = "block";
+        emailError.innerText = "Email Already Exists";
+        resolve(false);
+      } else {
+        // console.log("Email available");
+        emailError.style.display = "none";
+        resolve(true);
+      }
+    } catch (error) {
+    //   console.error("Email check error:", error);
+      emailError.style.display = "none";
+      resolve(true);
+    }
+  });
+}
+
+async function customValidateAndSubmit(event) {
+  event.preventDefault();
+//   console.log("Form submission triggered");
+
+  if (typeof zf_ValidateAndSubmit === "function") {
+    if (!zf_ValidateAndSubmit()) {
+    //   console.log("Zoho native validation failed");
+      return false;
+    }
+  }
+
+  if (!(await validate_Email())) {    
+    // console.log("Email validation failed - blocking submit");
+    return false;
+  }
+
+//   console.log("All validations passed - submitting form");
+
+   
+ event.target.submit();
+
+  
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("form");
+  form.addEventListener("submit", customValidateAndSubmit);
+});
+
+
+</script>
 
 </body>
+</html>
