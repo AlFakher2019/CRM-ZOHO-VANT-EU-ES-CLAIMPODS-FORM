@@ -161,6 +161,15 @@ ol, ul {
     font-weight: bold;
 }
 
+.zf-important-1 {
+	color: #B61C11!important;
+    padding: 0;
+    font-size: 25px !important;
+	position: absolute;
+    margin-left: 2px;
+    font-weight: bold;
+}
+
 /**********instruction Message***********/
 .zf-instruction {
 	color: #465475;
