@@ -431,11 +431,46 @@
     <!-- Flatpickr JS -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
+        function validateDOBAge() {
+            const dobInput = document.getElementById("Dob");
+            const dobError = document.getElementById("Date_error");
+            const rawValue = dobInput?.value?.trim();
+            if (!dobInput) {
+                return true;
+            }
+
+            if (!rawValue) {
+                dobError.style.display = "block";
+                dobError.innerText = "valor no válido";
+                return false;
+            }
+
+            const parsedDOB = flatpickr.parseDate(rawValue, "d-M-Y") || flatpickr.parseDate(rawValue, "d/m/Y");
+            if (!parsedDOB || isNaN(parsedDOB.getTime())) {
+                dobError.style.display = "block";
+                dobError.innerText = "valor no válido";
+                return false;
+            }
+
+            const today = new Date();
+            const eighteenthBirthday = new Date(parsedDOB.getFullYear() + 18, parsedDOB.getMonth(), parsedDOB.getDate());
+            if (today < eighteenthBirthday) {
+                dobError.style.display = "block";
+                dobError.innerText = "Debe tener 18 años o más.";
+                return false;
+            }
+
+            dobError.style.display = "none";
+            return true;
+        }
+
         function initDOBPicker() {
+            const today = new Date();
             flatpickr("#Dob", {
                 dateFormat: "d-M-Y",
-                maxDate: "today",
-                disableMobile: true
+                maxDate: today,
+                disableMobile: true,
+                onChange: validateDOBAge
             });
         }
 
@@ -550,6 +585,18 @@ async function customValidateAndSubmit(event) {
     }
   }
 
+  if (!validateDOBAge()) {
+    const dobInput = document.getElementById("Dob");
+    if (dobInput) {
+      dobInput.focus();
+      const pickerInstance = dobInput._flatpickr;
+      if (pickerInstance) {
+        pickerInstance.open();
+      }
+    }
+    return false;
+  }
+
   if (!(await validate_Email())) {    
     // console.log("Email validation failed - blocking submit");
     return false;
@@ -566,6 +613,10 @@ async function customValidateAndSubmit(event) {
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("form");
   form.addEventListener("submit", customValidateAndSubmit);
+  const dobInput = document.getElementById("Dob");
+  if (dobInput) {
+    ["change", "input", "blur"].forEach((evt) => dobInput.addEventListener(evt, validateDOBAge));
+  }
 });
 
 
