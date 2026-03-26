@@ -1684,8 +1684,8 @@ input.country-field[readonly] {
     box-sizing: border-box !important;
 }
 
-/* Override: Add gap only to first box */
-.zf-threeColumns .zf-tempContDiv span:first-child {
+/* Override: Add gap only to first and second box */
+.zf-threeColumns .zf-tempContDiv span:not(:last-child) {
     margin-right: 27px !important;
 }
 
